@@ -1,0 +1,36 @@
+SYSLOG
+syslog server is a server storing everything .(firewall did this and user logged in ...........etc)
+If someone hacks the network, the cybersecurity analyst can read the logs like a detective.
+port UDP 514
+
+NTP (The Network Clock)
+NTP makes every device use the same time.
+IF hacker: The attack becomes much harder to investigate.
+port UDP 123
+
+DNS (The Internet Phonebook)
+google.com
+↓
+142.250.xx.xx
+DNS Exfiltration wwwsecretdatalongmalouka.com
+
+HTTP
+iFrame Injection attack.
+HTTPS (HTTP+SECRYPTION)
+
+SMTP
+email server hacker use it to send malware
+
+POP3/IMAP
+Receive email
+Deliver malware attachments
+POP3 → Downloads email to one device 
+IMAP → Synchronizes email across all devices 
+
+ICMP (Ping)
+tunneling by sending data via packet 
+
+
+
+
+
