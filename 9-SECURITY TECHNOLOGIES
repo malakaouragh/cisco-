@@ -1,0 +1,38 @@
+ACL --- MITIGATING ICMP Abuse
+ACLs improve security but cannot stop all attacks, such as ICMP tunneling, IP spoofing, or data exfiltration.
+Modern security relies on Next-Generation Firewalls (NGFWs) and advanced threat detection alongside ACLs.
+
+NAT = Network Address Translation
+change local ip to global one
+
+PAT (Port Address Translation) allows multiple devices to share a single public IP by using different port numbers.
+NetFlow tracks network connections.
+A tunnel is a private path inside another network.
+
+
+Encryption converts readable data into unreadable data to protect confidentiality.
+Encapsulation wraps data with protocol headers as it moves through the network stack.
+Tunneling creates a virtual path that carries encrypted traffic across a public network (e.g., a VPN).
+VPNs use encryption and tunneling to securely connect remote networks or users.
+
+
+Peer-to-Peer (P2P) Networking
+P2P allows devices to act as both clients and servers.
+Common uses include file sharing, processor sharing, and instant messaging.
+File-sharing P2P applications increase the risk of malware distribution and can bypass firewall protections.
+P2P traffic is dynamic, making it difficult to monitor and secure.
+
+Tor
+Tor provides anonymous Internet access through encrypted onion routing.
+Traffic passes through multiple Tor relays, hiding the user's identity and destination.
+Tor is used for privacy but is also abused for malware communication and illegal activities.
+Encrypted Tor traffic makes security monitoring and blocking more difficult.
+
+
+
+Load Balancing
+Load balancing distributes network traffic across multiple servers to improve performance and availability.
+DNS-based load balancing can return different IP addresses for the same domain based on server load.
+Health probes monitor server availability before directing client traffic.
+Load balancing traffic may appear unusual during packet analysis but is typically legitimate.
+
