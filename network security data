@@ -1,0 +1,53 @@
+10-SECURITY DATA 
+1-types of security data 
+  Alert Data is simply:A warning generated when suspicious traffic is detected.
+  A session data is A complete conversation between two devices.
+  A transaction data is The actual request and response inside a session.
+  Full Packet Capture : wireshark
+  Statistical Data :We look at the whole network.(machine learning and anomaly detection.
+
+
+2-END DEVICE LOGS
+ 1-Host Logs tell you :What happened on one computer?A host log is a diary kept by the computer itself. HIDSost based intrusion detection +lsaas is security program
+ 2-yslog = centralized logging protocol.Every message has Priority Header Message
+ 3- server log :Server Logs tell us Who accessed the server?+ there are dns logs
+ 4-SIEM = Security Information and Event Management
+  SOAR = Security Orchestration, Automation, and Response
+
+
+
+3-NETWORK LOGS
+
+10.3.1 tcpdump
+Command-line packet capture tool for recording and analyzing network traffic.
+Captures complete packets, including headers and payloads.
+Forms the basis for graphical tools like Wireshark.
+10.3.2 NetFlow
+Records metadata about network flows instead of full packet contents.
+Tracks source/destination IPs, ports, protocols, timestamps, and byte counts.
+Supports network monitoring, troubleshooting, and security investigations.
+IPFIX is the standardized version based on Cisco NetFlow.
+10.3.3 Application Visibility and Control (AVC)
+Identifies and classifies applications using NBAR2.
+Provides visibility into application usage beyond traditional port-based monitoring.
+Enables traffic prioritization, bandwidth management, and policy enforcement.
+10.3.4 Content Filter Logs
+ESA (Email Security Appliance) logs spam, malware, antivirus, and email filtering events.
+WSA (Web Security Appliance) logs web requests, malware detections, URL filtering, and ACL decisions.
+Supports centralized security monitoring and incident analysis.
+10.3.5 Cisco Device Logging
+Cisco devices generate Syslog messages containing timestamps, severity levels, facilities, and event descriptions.
+Used for centralized monitoring and troubleshooting of network infrastructure.
+10.3.6 Proxy Logs
+Proxy servers log web and DNS requests made by users.
+Useful for monitoring browsing activity, detecting malicious destinations, and preventing data loss.
+Cisco Umbrella enhances DNS security using cloud-based threat intelligence.
+10.3.7 Next-Generation Firewalls (NGFW)
+NGFWs provide advanced security features including application awareness, IPS, malware protection, URL filtering, and VPN support.
+Common event types:
+Connection Event – Records network sessions.
+Intrusion Event – Detects malicious activity.
+Host/Endpoint Event – Logs newly detected devices.
+Network Discovery Event – Detects changes in the network.
+NetFlow Event – Generated from NetFlow-based network discovery.
+
