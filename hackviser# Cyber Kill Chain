@@ -1,0 +1,53 @@
+A framework that describes the lifecycle of a cyber attack. It helps defenders identify **where an attack is occurring** and **where it can be stopped**.
+
+## Stages
+
+1. **Reconnaissance**
+   - Gather information about the target.
+   - Examples: OSINT, Nmap scans, DNS enumeration, employee information.
+
+2. **Weaponization**
+   - Prepare the payload (malware, exploit, malicious document).
+
+3. **Delivery**
+   - Send the payload.
+   - Examples: phishing email, malicious website, USB, file download.
+
+4. **Exploitation**
+   - Trigger a vulnerability to execute code.
+
+5. **Installation**
+   - Install malware or a backdoor to maintain persistence.
+
+6. **Command & Control (C2)**
+   - Establish communication with the attacker's server to receive commands.
+
+7. **Actions on Objectives**
+   - Perform the final objective:
+     - Data theft
+     - Ransomware
+     - Credential theft
+     - Sabotage
+     - Lateral movement
+
+## SOC Perspective
+
+Ask yourself:
+
+- Where is the attacker in the Kill Chain?
+- Which stage can we detect?
+- Which stage can we block?
+
+Examples:
+- Recon → Detect scans with IDS/NDR.
+- Delivery → Block phishing emails.
+- Exploitation → Patch vulnerabilities, EDR detection.
+- Installation → Antivirus/EDR removes malware.
+- C2 → Firewall/DNS blocks communication.
+- Actions on Objectives → Detect abnormal behavior and respond.
+
+## Key Idea
+
+The attacker must complete every stage.
+
+The defender only needs to break **one** stage to stop the attack.
