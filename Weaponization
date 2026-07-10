@@ -1,0 +1,81 @@
+# Weaponization - Practical Notes
+
+## Purpose
+Prepare the attack before interacting with the target.
+
+> Exploit + Payload = Weapon
+
+---
+
+## Key Concepts
+
+### Exploit
+Code that takes advantage of a vulnerability.
+
+Examples:
+- SQL Injection
+- Buffer Overflow
+- Remote Code Execution (RCE)
+- Deserialization
+
+### Payload
+Code executed **after** successful exploitation.
+
+Common objectives:
+- Remote access
+- Persistence
+- Data theft
+- Privilege escalation
+
+---
+
+## Common Payload Types
+
+### Reverse Shell
+- Target initiates the connection to the attacker.
+- More common because outbound connections are often allowed.
+
+### Bind Shell
+- Target opens a port and waits for the attacker.
+- Less common because inbound connections are often blocked.
+
+---
+
+## Common Weaponized File Types
+
+- Office documents (.docm, .xlsm) → VBA Macros
+- PDF documents
+- HTA (.hta)
+- JavaScript (.js)
+- VBScript (.vbs)
+- Executables (.exe)
+
+---
+
+## Obfuscation Techniques
+
+Purpose: evade AV/EDR detection.
+
+Common techniques:
+- Base64 Encoding
+- Packing (e.g., UPX)
+- Encryption
+- Code Obfuscation
+
+---
+
+## Defender Perspective (SOC)
+
+Watch for:
+- Office files with macros
+- Suspicious attachments
+- Executable attachments
+- HTA / JS / VBS files
+- Reverse shell connections
+- Unusual outbound network traffic
+
+Security controls:
+- Email Gateway
+- Sandbox
+- Antivirus / EDR
+- Threat Intelligence
