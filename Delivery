@@ -1,0 +1,83 @@
+# Delivery - Practical Notes
+
+## Goal
+Deliver the prepared payload to the victim.
+
+---
+
+## Common Delivery Methods
+
+### 1. Phishing (Most Common)
+
+**Attachments**
+- PDF
+- Word / Excel documents
+- ZIP
+- Executable (.exe)
+
+**Links**
+- Fake login pages (Credential Harvesting)
+- Malware download links
+
+---
+
+### 2. Web Delivery
+
+**Drive-by Download**
+- Malware is downloaded when the victim visits a malicious or compromised website.
+
+**Watering Hole**
+- Attacker compromises a legitimate website frequently visited by the target.
+
+---
+
+### 3. USB / External Media
+
+Examples:
+- Malicious USB drives
+- USB Rubber Ducky (acts as a keyboard and executes pre-programmed keystrokes)
+
+---
+
+## Email Authentication
+
+### SPF (Sender Policy Framework)
+Verifies that the sender's IP is authorized to send emails for the domain.
+
+### DKIM (DomainKeys Identified Mail)
+Uses digital signatures to verify that the email content has not been modified.
+
+### DMARC
+Defines what to do if SPF/DKIM checks fail:
+- None
+- Quarantine
+- Reject
+
+---
+
+## Indicators of a Suspicious Email
+
+- Sender and Return-Path do not match.
+- Suspicious attachments.
+- Urgent or threatening language.
+- Unexpected links.
+- Domain impersonation (typosquatting).
+
+---
+
+## Defender Perspective (SOC)
+
+Monitor:
+- Failed SPF/DKIM/DMARC checks.
+- Suspicious attachments.
+- Malicious URLs.
+- Newly registered domains.
+- Users clicking phishing links.
+- USB device events.
+
+Security Controls:
+- Email Security Gateway
+- Sandbox
+- URL Filtering / Web Proxy
+- User Awareness Training
+- USB Device Control
