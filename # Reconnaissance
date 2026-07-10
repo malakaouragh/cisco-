@@ -1,0 +1,100 @@
+# Reconnaissance - Practical Notes
+
+## Passive Reconnaissance (OSINT)
+
+### Google Dorking
+Search for publicly exposed information.
+
+Examples:
+```text
+site:target.com filetype:pdf
+site:target.com ext:sql
+site:target.com intitle:"index of"
+```
+
+---
+
+### theHarvester
+Collect:
+- Emails
+- Subdomains
+- Hostnames
+
+Example:
+```bash
+theHarvester -d target.com -l 500 -b google
+```
+
+---
+
+### Shodan
+Search Internet-facing devices.
+
+Examples:
+```bash
+shodan search org:"Target Organization"
+```
+
+Useful for:
+- Open ports
+- Server banners
+- Exposed services
+- IoT devices
+
+---
+
+## Active Reconnaissance
+
+### Nmap
+
+#### SYN Scan
+```bash
+nmap -sS -p- <IP>
+```
+
+#### Version Detection
+```bash
+nmap -sV <IP>
+```
+
+#### OS Detection
+```bash
+nmap -O <IP>
+```
+
+#### Common Combination
+```bash
+nmap -sS -sV -O <IP>
+```
+
+---
+
+### Gobuster
+
+Directory enumeration.
+
+Example:
+```bash
+gobuster dir -u http://target.com -w /usr/share/wordlists/dirb/common.txt
+```
+
+Purpose:
+- Hidden directories
+- Hidden files
+- Admin panels
+- Backup files
+
+---
+
+## Information to Collect During Recon
+
+- Domain
+- Subdomains
+- IP addresses
+- Open ports
+- Running services
+- Service versions
+- Operating System
+- Technologies (Apache, Nginx, PHP, WordPress...)
+- Email addresses
+- Employee names
