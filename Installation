@@ -1,0 +1,77 @@
+Installation
+After the exploitation stage is successful, the attacker has the authority to execute code on the target system. However, this access is usually temporary. If the user shuts down the computer, terminates the application, or the network connection is lost, the attacker's access is lost.
+
+The Installation stage is where the attacker places backdoors or changes configurations to ensure Persistence on the system. The goal is to maintain access even if the system is restarted.
+
+Common Persistence Mechanisms
+1. Windows Registry Keys
+
+In the Windows operating system, the list of programs to be automatically executed at system startup is kept in the Registry. Attackers add their malware to these keys.
+
+Most Frequently Used Keys:
+
+HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce
+Example Attacker Command (Terminal):
+The attacker can use the command line to add the malicious backdoor.exe file to startup:
+
+Persistence via Registry
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v "WindowsUpdater" /t REG_SZ /d "C:\Users\Public\backdoor.exe" /f
+This command ensures that the backdoor.exe file runs as "WindowsUpdater" every time the user logs in.
+
+2. Scheduled Tasks / Cron Jobs
+
+Attackers can schedule their malware to run at specific time intervals or on specific events (when the computer starts, locks).
+
+Windows (Schtasks):
+
+Creating Scheduled Task
+schtasks /create /sc onlogon /tn "SecurityHealthCheck" /tr "C:\Users\Public\backdoor.exe"
+Linux (Cron Job):
+The attacker can add a line to the /etc/crontab file or the user's crontab file.
+
+Crontab Persistence
+# Run reverse shell script every hour
+0 * * * * /bin/bash /var/tmp/rev_shell.sh
+3. Service Creation
+
+Attackers can register their malware as a Windows service or Linux daemon. Services usually run with SYSTEM (or root) privileges, which gives the attacker high-privileged persistent access.
+
+Service Creation via SC
+sc create "MaliciousService" binPath= "C:\Users\Public\backdoor.exe" start= auto
+sc start "MaliciousService"
+4. Web Shell (For Web Servers)
+
+If the target is a web server, the attacker leaves a small script file (Web Shell) in an accessible directory. They can send commands to the system at any time via this file.
+
+Example PHP Web Shell (config_update.php):
+
+PHP Web Shell
+<?php
+    if(isset($_REQUEST['cmd'])){
+        echo "<pre>" . shell_exec($_REQUEST['cmd']) . "</pre>";
+    }
+?>
+The attacker maintains access by going to http://target-site.com/config_update.php?cmd=cat+/etc/passwd in the browser.
+
+5. Startup Folder
+
+Files placed in the C:\Users\<User>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup folder in Windows run automatically when the user logs in.
+
+6. DLL Hijacking
+
+Applications look for the DLL files they need in a specific order when running. If the attacker places a malicious DLL file with the name of a DLL the application is looking for in the directory where the application is running, the application loads and executes the malicious DLL instead of the real one.
+
+Installation Stage Analysis: Dropper vs Downloader
+Two types of tools are generally used when installing after exploitation:
+
+Dropper: Contains the malware within itself. When executed, it "drops" the actual malware to the disk and runs it. The file size is larger.
+Downloader: Very small. It only connects to the internet to download and run the actual large malware.
+Detection and Defense in Installation Stage
+The installation stage is the stage where the attacker makes a "file change" or "configuration change" on the system. These changes leave traces.
+
+FIM (File Integrity Monitoring): Software that monitors changes in critical system files and configurations (e.g., Wazuh, Tripwire). It should alert when a new .php or .aspx file is added to web directories.
+Registry Monitoring: Additions to Run and RunOnce keys should be monitored.
+Privilege Management (Least Privilege): Users not having administrator privileges prevents the attacker from writing to the Registry or creating a Service.
+Application Whitelisting (AppLocker): Allowing only approved software and scripts to run ensures that even if the attacker saves the backdoor.exe file to the disk, they cannot run it.
