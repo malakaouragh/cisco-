@@ -1,0 +1,125 @@
+# Command & Control (C2)
+
+## Goal
+After compromising a system, the attacker needs a communication channel to:
+- Execute commands remotely.
+- Upload/download files.
+- Steal data.
+- Move laterally.
+- Keep control of the infected machine.
+
+If the C2 connection is blocked, the attacker usually loses remote control.
+
+---
+
+## Common C2 Channels
+
+### HTTP / HTTPS
+The most common C2 channel.
+
+The malware periodically sends requests (Beaconing) to the attacker's server, looking like normal web traffic.
+
+Why?
+- HTTP/HTTPS is usually allowed through firewalls.
+- Blends with normal user traffic.
+
+---
+
+### DNS Tunneling
+
+Hide data inside DNS queries.
+
+Example:
+```
+
+password123.attacker.com
+
+```
+
+The attacker receives the DNS query and extracts the hidden data.
+
+Used because DNS traffic is often trusted.
+
+---
+
+### Other C2 Protocols
+
+- ICMP (Ping)
+- FTP
+- SMTP
+- Cloud services (Google Drive, Dropbox)
+- Social media (Telegram, Twitter, Discord...)
+
+Legitimate services make detection harder.
+
+---
+
+## Important Concepts
+
+### Beaconing
+
+The malware periodically contacts the C2 server asking for commands.
+
+Example:
+```
+
+Victim → C2 every 60 seconds
+
+```
+
+Regular beaconing is easier to detect.
+
+---
+
+### Jitter
+
+Randomizes beacon intervals.
+
+Instead of every **60s**, it connects every **48–72s**.
+
+Purpose:
+- Avoid detection.
+
+---
+
+### DGA (Domain Generation Algorithm)
+
+Malware generates many random domains every day.
+
+Example:
+
+```
+
+abc123.com
+xzy987.com
+klm456.com
+
+```
+
+The attacker only registers one.
+
+The malware keeps trying until it finds the correct one.
+
+Purpose:
+- Bypass domain blocking.
+
+---
+
+## Defender Perspective (SOC)
+
+Monitor for:
+
+- Beaconing traffic.
+- Connections to unknown/newly registered domains.
+- Long-lived outbound connections.
+- Traffic outside business hours.
+- Suspicious User-Agents.
+- DNS tunneling (very long DNS queries).
+- Many NXDOMAIN responses (possible DGA).
+
+Security Controls:
+- Firewall
+- Proxy
+- DNS Monitoring
+- Threat Intelligence (IOC feeds)
+- Network Segmentation
