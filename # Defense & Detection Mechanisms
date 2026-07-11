@@ -1,0 +1,55 @@
+# Defense & Detection Mechanisms
+
+## Defense Matrix (6D)
+
+| Action | Purpose |
+|---------|---------|
+| **Detect** | Identify malicious activity. |
+| **Deny** | Prevent the attack. |
+| **Disrupt** | Interrupt the attack. |
+| **Degrade** | Reduce the attack's effectiveness. |
+| **Deceive** | Mislead the attacker (e.g., Honeypots). |
+| **Destroy / Contain** | Isolate infected systems and stop the attack. |
+
+---
+
+## Defense by Kill Chain Stage
+
+| Stage | Detection | Prevention |
+|--------|-----------|------------|
+| **Reconnaissance** | Firewall/IDS logs, scan detection | Firewall rules, hide unnecessary information |
+| **Weaponization** | Malware analysis, Threat Intelligence | Generate IoCs |
+| **Delivery** | Email Gateway, user reports | SPF, DKIM, DMARC, URL filtering, attachment scanning |
+| **Exploitation** | EDR, WAF | Patch management, DEP, ASLR, Input Validation |
+| **Installation** | FIM, Registry monitoring | Least Privilege, AppLocker |
+| **C2** | Beaconing, DNS analysis, Proxy/Firewall logs | DNS Sinkhole, Egress Filtering, Network Segmentation |
+| **Actions on Objectives** | DLP, UEBA | Isolation, Encryption, Backups |
+
+---
+
+# Important Log Sources (SOC)
+
+| Log Source | Detects |
+|------------|----------|
+| **Firewall / Proxy** | Malicious domains, C2 traffic, Beaconing |
+| **Email Gateway** | Phishing, malicious attachments |
+| **EDR / Antivirus** | Exploitation, malware, persistence |
+| **DNS Logs** | DGA, DNS Tunneling |
+| **Active Directory** | Brute Force, Pass-the-Hash, Privilege Escalation |
+
+---
+
+# Indicators of Compromise (IoCs)
+
+An **IoC (Indicator of Compromise)** is evidence that a system may have been compromised.
+
+Common IoCs:
+- File Hash (MD5 / SHA256)
+- Malicious IP Address
+- Malicious Domain
+- File Name
+- Registry Key
+- Mutex
+- Process Name
+
+IoCs are imported into SIEMs, Firewalls, EDRs, and IDS/IPS solutions to automatically detect or block known threats.
