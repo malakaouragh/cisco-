@@ -1,0 +1,101 @@
+# Cyber Kill Chain vs MITRE ATT&CK
+
+## Cyber Kill Chain
+
+**Purpose:** Describes the **lifecycle of an attack** (high-level view).
+
+**Question it answers:**
+
+> **Where is the attacker in the attack?**
+
+### 7 Stages
+
+1. Reconnaissance
+2. Weaponization
+3. Delivery
+4. Exploitation
+5. Installation (Persistence)
+6. Command & Control (C2)
+7. Actions on Objectives
+
+**Best used for:**
+
+* Understanding attack progression.
+* Strategic security planning.
+* Explaining attacks to management.
+
+---
+
+## MITRE ATT&CK
+
+**Purpose:** Documents **real attacker behaviors** based on observed attacks.
+
+**Question it answers:**
+
+> **How is the attacker performing the attack?**
+
+### MITRE Structure
+
+* **Tactic** → The attacker's objective (**WHY?**)
+* **Technique** → The method used to achieve that objective (**HOW?**)
+* **Sub-technique** → A more specific implementation of a technique.
+
+### Examples
+
+| Tactic              | Technique                      |
+| ------------------- | ------------------------------ |
+| Initial Access      | Phishing                       |
+| Execution           | PowerShell                     |
+| Persistence         | Registry Run Keys              |
+| Persistence         | Scheduled Tasks                |
+| Credential Access   | Credential Dumping             |
+| Lateral Movement    | Pass-the-Hash                  |
+| Command and Control | HTTP/HTTPS                     |
+| Exfiltration        | Exfiltration Over Web Services |
+
+---
+
+## Cyber Kill Chain vs MITRE ATT&CK
+
+| Cyber Kill Chain                     | MITRE ATT&CK                                 |
+| ------------------------------------ | -------------------------------------------- |
+| High-level attack lifecycle          | Detailed attacker behaviors                  |
+| 7 sequential stages                  | Hundreds of tactics & techniques             |
+| Answers **"Where is the attacker?"** | Answers **"How is the attacker attacking?"** |
+| Strategic planning                   | Detection, Threat Hunting, Incident Response |
+
+---
+
+## Stage Mapping
+
+| Cyber Kill Chain      | MITRE ATT&CK                     |
+| --------------------- | -------------------------------- |
+| Reconnaissance        | Reconnaissance                   |
+| Weaponization         | Resource Development             |
+| Delivery              | Initial Access                   |
+| Exploitation          | Execution                        |
+| Installation          | Persistence                      |
+| Command & Control     | Command and Control              |
+| Actions on Objectives | Collection, Exfiltration, Impact |
+
+---
+
+## Unified Kill Chain
+
+Created to overcome the limitations of the Cyber Kill Chain.
+
+Combines concepts from:
+
+* Cyber Kill Chain
+* MITRE ATT&CK
+
+Provides a more complete model for modern attacks (cloud, identity-based attacks, insider threats, lateral movement).
+
+---
+
+## Key Takeaways
+
+* **Cyber Kill Chain** = Understand the overall attack flow.
+* **MITRE ATT&CK** = Understand the exact techniques attackers use.
+* **SOC analysts** mainly use **MITRE ATT&CK** for detection, threat hunting, and incident response.
+* **Both frameworks complement each other** and are commonly used together in modern SOCs.
