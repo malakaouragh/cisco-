@@ -1,0 +1,103 @@
+# Actions on Objectives
+
+## Goal
+The attacker has successfully compromised the environment and now performs the actual objective of the attack.
+
+---
+
+## Common Objectives
+
+### Data Exfiltration
+Steal sensitive information.
+
+Examples:
+- Customer data
+- Credentials
+- Source code
+- Financial records
+
+Common exfiltration channels:
+- HTTPS
+- DNS Tunneling
+- Cloud storage (Dropbox, Google Drive)
+
+---
+
+### Ransomware
+
+Encrypt files and demand payment.
+
+**Double Extortion**
+- Encrypt the files.
+- Threaten to publish stolen data if the ransom is not paid.
+
+---
+
+### Data Destruction (Wiper)
+
+Destroy data or systems to disrupt operations.
+
+Examples:
+- Delete files
+- Format disks
+- Damage SCADA/Industrial systems
+
+---
+
+### Resource Hijacking
+
+Use the victim's resources for the attacker's benefit.
+
+Examples:
+- Cryptomining
+- Botnet participation
+- DDoS attacks
+
+---
+
+### Data Manipulation
+
+Modify legitimate data without authorization.
+
+Examples:
+- Change bank balances
+- Modify medical records
+- Alter database entries
+
+Goal:
+Compromise **Integrity** (CIA Triad).
+
+---
+
+## Lateral Movement
+
+Move from one compromised machine to another inside the network to reach more valuable targets.
+
+Common techniques:
+- Pass-the-Hash (NTLM)
+- RDP
+- SSH
+- WMI
+- PowerShell Remoting
+
+---
+
+## Defender Perspective (SOC)
+
+### DLP (Data Loss Prevention)
+Detects and blocks sensitive data leaving the organization.
+
+### UEBA (User & Entity Behavior Analytics)
+Detects abnormal user behavior.
+
+Examples:
+- Large uploads
+- Access to unusual files
+- Midnight activity
+- Mass file modifications (possible ransomware)
+
+### Network Segmentation
+Limits communication between systems to slow or prevent lateral movement.
+
+### Backups
+Most effective recovery method against ransomware (offline, regularly tested backups).
